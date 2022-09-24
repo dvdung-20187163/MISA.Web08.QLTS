@@ -406,7 +406,7 @@ namespace MISA.Web08.QLTS.API.Controllers
             try
             {
                 // Khởi tạo kết nối tới DB MySQL
-                string connectionString = "Server=localhost;Port=3306;Database=misa.web08.hcsn.nddat;Uid=root;Pwd=;";
+                string connectionString = "Server=localhost;Port=3307;Database=misa.web08.hcsn.dvdung;Uid=root;Pwd=dungday123@;";
                 var mysqlConnection = new MySqlConnection(connectionString);
 
                 // Khai báo tên prodecure BatchDelete
@@ -419,8 +419,8 @@ namespace MISA.Web08.QLTS.API.Controllers
                 {
                     queryList.Add($"fixed_asset_id= \'{assetIDs[i]}\'");
                 }
-                string assetIds = string.Join(" OR ", queryList);
-                parameters.Add("v_fixed_asset_id_list", assetIDs);
+                string assetIDList = string.Join(" OR ", queryList);
+                parameters.Add("d_fixed_asset_id_list", assetIDList);
 
                 // Xử lý dữ liệu trả về
                 var numberOfAffectedRows = mysqlConnection.Execute(storedProcedureName,
