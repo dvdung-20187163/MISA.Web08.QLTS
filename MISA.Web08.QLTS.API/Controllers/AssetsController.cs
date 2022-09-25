@@ -33,7 +33,6 @@ namespace MISA.Web08.QLTS.API.Controllers
                 string connectionString = "Server=localhost;Port=3307;Database=misa.web08.hcsn.dvdung;Uid=root;Pwd=dungday123@;";
                 var mysqlConnection = new MySqlConnection(connectionString);  // gạch chân đỏ --> using 1 package
 
-
                 // B2: Chuẩn bị câu lệnh SQL
                 string storedProcedureName = "Proc_asset_GetAll";
                 var parameters = new DynamicParameters();
@@ -43,16 +42,29 @@ namespace MISA.Web08.QLTS.API.Controllers
                     storedProcedureName,
                     parameters,
                     commandType: System.Data.CommandType.StoredProcedure);
+                if (assets != null)
+                {
                 return StatusCode(StatusCodes.Status200OK, assets);
+
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
+                        QLTSErrorCode.Exeption,
+                        Resource.DevMsg_GetAllFailed,
+                        Resource.UserMsg_GetAllFailed,
+                        Resource.MoreInfo_GetAllFailed,
+                        HttpContext.TraceIdentifier));
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
                     QLTSErrorCode.Exeption,
-                    "Catched an exeption",
-                    "Có lỗi xảy ra, vui lòng liên hệ với MISA.",
-                    "https://openapi.misa.com.vn/errorCode/e001",
+                    Resource.DevMsg_Exeption,
+                    Resource.UserMsg_Exeption,
+                    Resource.MoreInfo_Exeption,
                     HttpContext.TraceIdentifier));
             }
         }
@@ -96,9 +108,9 @@ namespace MISA.Web08.QLTS.API.Controllers
                 {
                     return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
                         QLTSErrorCode.GetDetailOneFailed,
-                        "Select from database return 0",
-                        "Không tìm thấy tài sản.",
-                        "https://openapi.misa.com.vn/errorcode/e001",
+                        Resource.DevMsg_GetDetailOneFailed,
+                        Resource.UserMsg_GetDetailOneFailed,
+                        Resource.MoreInfo_GetDetailOneFailed,
                         HttpContext.TraceIdentifier));
                 }
 
@@ -108,9 +120,9 @@ namespace MISA.Web08.QLTS.API.Controllers
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
                     QLTSErrorCode.Exeption,
-                    "Catched an exeption",
-                    "Có lỗi xảy ra, vui lòng liên hệ với MISA.",
-                    "https://openapi.misa.com.vn/errorCode/e001",
+                    Resource.DevMsg_Exeption,
+                    Resource.UserMsg_Exeption,
+                    Resource.MoreInfo_Exeption,
                     HttpContext.TraceIdentifier));
             }
         }
@@ -170,21 +182,21 @@ namespace MISA.Web08.QLTS.API.Controllers
                 {
                     return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
                         QLTSErrorCode.FilterFailed,
-                        "Filter from database return 0",
-                        "Lọc tài sản thất bại.",
-                        "https://openapi.misa.com.vn/errorcode/e001",
+                        Resource.DevMsg_FilterFailed,
+                        Resource.UserMsg_FilterFailed,
+                        Resource.MoreInfo_FilterFailed,
                         HttpContext.TraceIdentifier));
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
-                       QLTSErrorCode.Exeption,
-                       "Filter from database return 0",
-                       "Lọc tài sản thất bại thất bại.",
-                       "https://openapi.misa.com.vn/errorcode/e001",
-                       HttpContext.TraceIdentifier));
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
+                    QLTSErrorCode.Exeption,
+                    Resource.DevMsg_Exeption,
+                    Resource.UserMsg_Exeption,
+                    Resource.MoreInfo_Exeption,
+                    HttpContext.TraceIdentifier));
             }
 
         }
@@ -245,22 +257,22 @@ namespace MISA.Web08.QLTS.API.Controllers
                 else
                 {
                     return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
-                    QLTSErrorCode.InsertFailed,
-                    "Insert to database return 0",
-                    "Thêm mới tài sản thất bại.",
-                    "https://openapi.misa.com.vn/errorCode/e001",
-                    HttpContext.TraceIdentifier));
+                        QLTSErrorCode.InsertFailed,
+                        Resource.DevMsg_InsertFailed,
+                        Resource.UserMsg_InsertFailed,
+                        Resource.UserMsg_InsertFailed,
+                        HttpContext.TraceIdentifier));
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
-                QLTSErrorCode.Exeption,
-                "Inset to databse return 0",
-                "Thêm mới tài sản thất bại.",
-                "https://openapi.misa.com.vn/errorCode/e001",
-                HttpContext.TraceIdentifier));
+                    QLTSErrorCode.Exeption,
+                    Resource.DevMsg_Exeption,
+                    Resource.UserMsg_Exeption,
+                    Resource.MoreInfo_Exeption,
+                    HttpContext.TraceIdentifier));
             }
         }
 
@@ -320,9 +332,9 @@ namespace MISA.Web08.QLTS.API.Controllers
                 {
                     return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
                     QLTSErrorCode.UpdateFailed,
-                    "Update asset from database return 0",
-                    "Chỉnh sửa tài sản thất bại.",
-                    "https://openapi.misa.com.vn/errorCode/e001",
+                    Resource.DevMsg_UpdateFailed,
+                    Resource.UserMsg_UpdateFailed,
+                    Resource.MoreInfo_UpdateFailed,
                     HttpContext.TraceIdentifier));
                 }
             }
@@ -330,11 +342,11 @@ namespace MISA.Web08.QLTS.API.Controllers
             {
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
-                QLTSErrorCode.Exeption,
-                Resource.DevMsg_Exeption,
-                "Chỉnh sửa tài sản thất bại.",
-                "https://openapi.misa.com.vn/errorCode/e001",
-                HttpContext.TraceIdentifier));
+                    QLTSErrorCode.Exeption,
+                    Resource.DevMsg_Exeption,
+                    Resource.UserMsg_Exeption,
+                    Resource.MoreInfo_Exeption,
+                    HttpContext.TraceIdentifier));
             }
             
         }
@@ -376,9 +388,9 @@ namespace MISA.Web08.QLTS.API.Controllers
                 {
                     return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
                         QLTSErrorCode.Exeption,
-                        "Delete asset from database return 0",
-                        "Xóa tài sản thất bại.",
-                        "https://openapi.misa.com.vn/errorCode/e001",
+                        Resource.DevMsg_DeleteAssetFailed,
+                        Resource.UserMsg_DeleteAssetFailed,
+                        Resource.MoreInfo_DeleteAssetFailed,
                         HttpContext.TraceIdentifier));
                 }
             }
@@ -386,11 +398,11 @@ namespace MISA.Web08.QLTS.API.Controllers
             {
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
-                QLTSErrorCode.DeleteFailed,
-                "Delete asset from database return 0",
-                "Xóa tài sản thất bại",
-                "https://openapi.misa.com.vn/errorCode/e001",
-                HttpContext.TraceIdentifier));
+                    QLTSErrorCode.Exeption,
+                    Resource.DevMsg_Exeption,
+                    Resource.UserMsg_Exeption,
+                    Resource.MoreInfo_Exeption,
+                    HttpContext.TraceIdentifier));
             }
         }
 
@@ -436,9 +448,9 @@ namespace MISA.Web08.QLTS.API.Controllers
                 {
                     return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
                         QLTSErrorCode.BatchDeleteFailed,
-                        "Delete from database return 0",
-                        "Xóa nhiều tài sản thất bại.",
-                        "https://openapi.misa.com.vn/errorcode/e001",
+                        Resource.DevMsg_BatchDeleteFailed,
+                        Resource.UserMsg_BatchDeleteFailed,
+                        Resource.MoreInfo_BatchDeleteFailed,
                         HttpContext.TraceIdentifier));
                 }
             }
@@ -447,9 +459,9 @@ namespace MISA.Web08.QLTS.API.Controllers
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
                     QLTSErrorCode.Exeption,
-                    "Delete from database return 0",
-                    "Xóa nhiều tài sản thất bại.",
-                    "https://openapi.misa.com.vn/errorcode/e001",
+                    Resource.DevMsg_Exeption,
+                    Resource.UserMsg_Exeption,
+                    Resource.MoreInfo_Exeption,
                     HttpContext.TraceIdentifier));
             }
         } 

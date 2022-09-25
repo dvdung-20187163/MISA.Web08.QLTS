@@ -88,6 +88,15 @@ namespace MISA.Web08.QLTS.API.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filter data from database return 0.
+        /// </summary>
+        public static string DevMsg_FilterFailed {
+            get {
+                return ResourceManager.GetString("DevMsg_FilterFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get all asset from database return 0.
         /// </summary>
         public static string DevMsg_GetAllFailed {
@@ -108,9 +117,9 @@ namespace MISA.Web08.QLTS.API.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Insert to database return 0.
         /// </summary>
-        public static string DevMsg_IsertFailed {
+        public static string DevMsg_InsertFailed {
             get {
-                return ResourceManager.GetString("DevMsg_IsertFailed", resourceCulture);
+                return ResourceManager.GetString("DevMsg_InsertFailed", resourceCulture);
             }
         }
         
@@ -133,11 +142,38 @@ namespace MISA.Web08.QLTS.API.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/9.
+        /// </summary>
+        public static string MoreInfo_BatchDeleteFailed {
+            get {
+                return ResourceManager.GetString("MoreInfo_BatchDeleteFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/8.
         /// </summary>
         public static string MoreInfo_DeleteAssetFailed {
             get {
                 return ResourceManager.GetString("MoreInfo_DeleteAssetFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/1.
+        /// </summary>
+        public static string MoreInfo_Exeption {
+            get {
+                return ResourceManager.GetString("MoreInfo_Exeption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/10.
+        /// </summary>
+        public static string MoreInfo_FilterFailed {
+            get {
+                return ResourceManager.GetString("MoreInfo_FilterFailed", resourceCulture);
             }
         }
         
@@ -178,15 +214,6 @@ namespace MISA.Web08.QLTS.API.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/9.
-        /// </summary>
-        public static string MoreInfor_BatchDeleteFailed {
-            get {
-                return ResourceManager.GetString("MoreInfor_BatchDeleteFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Xóa nhiều tài sản thất bại.
         /// </summary>
         public static string UserMsg_BatchDeleteFailed {
@@ -214,6 +241,15 @@ namespace MISA.Web08.QLTS.API.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lọc dữ liệu từ database thất bại.
+        /// </summary>
+        public static string UserMsg_FilterFailed {
+            get {
+                return ResourceManager.GetString("UserMsg_FilterFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lấy toàn bộ tài sản thất bại.
         /// </summary>
         public static string UserMsg_GetAllFailed {
@@ -234,9 +270,9 @@ namespace MISA.Web08.QLTS.API.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Thêm mới tài sản thất bại.
         /// </summary>
-        public static string UserMsg_IsertFailed {
+        public static string UserMsg_InsertFailed {
             get {
-                return ResourceManager.GetString("UserMsg_IsertFailed", resourceCulture);
+                return ResourceManager.GetString("UserMsg_InsertFailed", resourceCulture);
             }
         }
         

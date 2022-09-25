@@ -129,6 +129,10 @@
     <value>Catch an exeption</value>
     <comment>Message cho Dev đọc khi gọi api gặp exeption</comment>
   </data>
+  <data name="DevMsg_FilterFailed" xml:space="preserve">
+    <value>Filter data from database return 0</value>
+    <comment>Message cho Dev đọc khi Filter dữ liệu từ database thất bại</comment>
+  </data>
   <data name="DevMsg_GetAllFailed" xml:space="preserve">
     <value>Get all asset from database return 0</value>
     <comment>Message cho Dev đọc GetAll bản ghi từ databse thất bại</comment>
@@ -137,7 +141,7 @@
     <value>Get detail one from database return 0</value>
     <comment>Message cho Dev đọc khi GetDetailOne bản ghi từ database thất bại</comment>
   </data>
-  <data name="DevMsg_IsertFailed" xml:space="preserve">
+  <data name="DevMsg_InsertFailed" xml:space="preserve">
     <value>Insert to database return 0</value>
     <comment>Message cho Dev đọc khi Insert bản ghi vào database thất bại</comment>
   </data>
@@ -149,13 +153,21 @@
     <value>One or more validation errors occured</value>
     <comment>Message cho Dev đọc khi validate dữ liệu đầu vào thất bại</comment>
   </data>
-  <data name="MoreInfor_BatchDeleteFailed" xml:space="preserve">
+  <data name="MoreInfo_BatchDeleteFailed" xml:space="preserve">
     <value>https://openapi.misa.com.vn/errorcode/9</value>
     <comment>Đường dẫn tới mô tả lỗi DeleteMultiple bản ghi từ database thất bại</comment>
   </data>
   <data name="MoreInfo_DeleteAssetFailed" xml:space="preserve">
     <value>https://openapi.misa.com.vn/errorcode/8</value>
     <comment>Đường dẫn tới mô tả lỗi Delete bản ghi từ database thất bại</comment>
+  </data>
+  <data name="MoreInfo_Exeption" xml:space="preserve">
+    <value>https://openapi.misa.com.vn/errorcode/1</value>
+    <comment>Đường dẫn tới mô tả lỗi Exeption </comment>
+  </data>
+  <data name="MoreInfo_FilterFailed" xml:space="preserve">
+    <value>https://openapi.misa.com.vn/errorcode/10</value>
+    <comment>Đường dẫn tới mô tả lỗi Filter dữ liệu từ database thất bại</comment>
   </data>
   <data name="MoreInfo_GetAllFailed" xml:space="preserve">
     <value>https://openapi.misa.com.vn/errorcode/4</value>
@@ -185,6 +197,10 @@
     <value>Có lỗi xảy ra, vui lòng liên hệ MISA</value>
     <comment>Message cho User đọc khi gọi api gặp exeption</comment>
   </data>
+  <data name="UserMsg_FilterFailed" xml:space="preserve">
+    <value>Lọc dữ liệu từ database thất bại</value>
+    <comment>Message cho User đọc khi Filter dữ liệu từ database thất bại</comment>
+  </data>
   <data name="UserMsg_GetAllFailed" xml:space="preserve">
     <value>Lấy toàn bộ tài sản thất bại</value>
     <comment>Message cho User đọc khi lấy toàn bộ bản ghi từ databse thất bại</comment>
@@ -193,7 +209,7 @@
     <value>Lấy tài sản theo ID thất bại</value>
     <comment>Message cho User đọc khi lấy chi tiết 1 bản ghi từ database thất bại</comment>
   </data>
-  <data name="UserMsg_IsertFailed" xml:space="preserve">
+  <data name="UserMsg_InsertFailed" xml:space="preserve">
     <value>Thêm mới tài sản thất bại</value>
     <comment>Message cho User đọc khi Insert bản ghi vào database thất bại</comment>
   </data>
