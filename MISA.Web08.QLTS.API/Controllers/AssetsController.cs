@@ -9,6 +9,7 @@ using MISA.Web08.QLTS.API.Properties;
 using MySqlConnector;
 using System.Data;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
+using static MISA.Web08.QLTS.API.Attributes.QLTSAttribute;
 
 namespace MISA.Web08.QLTS.API.Controllers
 {
@@ -215,6 +216,30 @@ namespace MISA.Web08.QLTS.API.Controllers
         {
             try
             {
+                // Validate dữ liệu đầu vào
+                var properties = typeof(Asset).GetProperties();
+                var validateFailures = new List<string>();
+                foreach(var property in properties)
+                {
+                    string propertyName = property.Name;
+                    var propertyValue = property.GetValue(asset);
+                    var isNotNulOrEmptyAtribute = (IsNotNullOrEmptyAttribute?)Attribute.GetCustomAttribute(property, typeof(IsNotNullOrEmptyAttribute));
+                    if (isNotNulOrEmptyAtribute != null && string.IsNullOrEmpty(propertyValue?.ToString()))
+                    {
+                        validateFailures.Add(isNotNulOrEmptyAtribute.ErrorMessage);
+                    }
+                }
+
+                if (validateFailures.Count > 0)
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
+                        QLTSErrorCode.InvalidInput,
+                        Resource.DevMsg_ValidateFailed,
+                        Resource.UserMsg_ValidateFailed,
+                        validateFailures,
+                        HttpContext.TraceIdentifier));
+                }
+
                 // Khởi tạo kết nối tói DB MySQL
                 string connectionString = "Server=localhost;Port=3307;Database=misa.web08.hcsn.dvdung;Uid=root;Pwd=dungday123@;";
                 var mysqlConnetion = new MySqlConnection(connectionString);
@@ -222,7 +247,7 @@ namespace MISA.Web08.QLTS.API.Controllers
                 // Khai báo tên procedure Insert
                 var storedProcedureName = "Proc_asset_InsertOne";
 
-            // Chuẩn bị tham số đầu vào
+                // Chuẩn bị tham số đầu vào
                 var assetID = Guid.NewGuid();
                 var parameters = new DynamicParameters();
                 parameters.Add("d_fixed_asset_id", assetID);
@@ -291,6 +316,30 @@ namespace MISA.Web08.QLTS.API.Controllers
         {
             try
             {
+                // validate dữ liệu đầu vào
+                var properties = typeof(Asset).GetProperties();
+                var validateFailures = new List<string>();
+                foreach (var property in properties)
+                {
+                    string propertyName = property.Name;
+                    var propertyValue = property.GetValue(asset);
+                    var isNotNulOrEmptyAtribute = (IsNotNullOrEmptyAttribute?)Attribute.GetCustomAttribute(property, typeof(IsNotNullOrEmptyAttribute));
+                    if (isNotNulOrEmptyAtribute != null && string.IsNullOrEmpty(propertyValue?.ToString()))
+                    {
+                        validateFailures.Add(isNotNulOrEmptyAtribute.ErrorMessage);
+                    }
+                }
+
+                if (validateFailures.Count > 0)
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
+                        QLTSErrorCode.InvalidInput,
+                        Resource.DevMsg_ValidateFailed,
+                        Resource.UserMsg_ValidateFailed,
+                        validateFailures,
+                        HttpContext.TraceIdentifier));
+                }
+
                 // Khởi tạo kết nối tới DB MySQL
                 string connectionString = "Server=localhost;Port=3307;Database=misa.web08.hcsn.dvdung;Uid=root;Pwd=dungday123@;";
                 var mysqlConnetion = new MySqlConnection(connectionString);

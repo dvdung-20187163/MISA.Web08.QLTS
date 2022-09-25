@@ -1,4 +1,5 @@
 ﻿using MISA.Web08.QLTS.API.Entities.DTO;
+using static MISA.Web08.QLTS.API.Attributes.QLTSAttribute;
 
 namespace MISA.Web08.QLTS.API.Entities
 {
@@ -7,16 +8,19 @@ namespace MISA.Web08.QLTS.API.Entities
         /// <summary>
         /// ID tài sản
         /// </summary>
+        [PrimaryKey]
         public Guid fixed_asset_id { get; set; }
 
         /// <summary>
         /// Mã tài sản
         /// </summary>
+        [IsNotNullOrEmpty("Mã tài sản không được để trống")]
         public string fixed_asset_code { get; set; }
 
         /// <summary>
         /// Tên tài sản
         /// </summary>
+        [IsNotNullOrEmpty("Tên tài sản không được để trống")]
         public string fixed_asset_name { get; set; }
 
         /// <summary>
@@ -37,11 +41,13 @@ namespace MISA.Web08.QLTS.API.Entities
         /// <summary>
         /// ID phòng ban
         /// </summary>
+        
         public Guid department_id { get; set; }
 
         /// <summary>
         /// ID tài sản
         /// </summary>
+        [IsNotNullOrEmpty("Mã bộ phận sử dụng không được để trống")]
         public string? department_code { get; set; }
 
         /// <summary>
@@ -57,52 +63,59 @@ namespace MISA.Web08.QLTS.API.Entities
         /// <summary>
         /// ID tài sản
         /// </summary>
-        public string? fixed_asset_category_code { get; set; }
+        [IsNotNullOrEmpty("Mã loại tài sản không được để trống")]
+        public string fixed_asset_category_code { get; set; }
 
         /// <summary>
         /// ID tài sản
         /// </summary>
-        public string? fixed_asset_category_name { get; set; }
+        public string fixed_asset_category_name { get; set; }
 
         /// <summary>
         /// Ngày mua
         /// </summary>
+        [IsNotNullOrEmpty("Ngày mua không được để trống")]
         public DateTime purchase_date { get; set; }
 
         /// <summary>
         /// Giá tiền
         /// </summary>
+        [IsNotNullOrEmpty("Nguyên giá không được để trống")]
         public double cost { get; set; }
 
         /// <summary>
         /// Số lượng
         /// </summary>
+        [IsNotNullOrEmpty("Mã loại tài sản không được để trống")]
         public int quantity { get; set; }
 
         /// <summary>
         /// Tỉ lệ hao mòn (%)
         /// </summary>
+        [IsNotNullOrEmpty("Tỷ lệ hao mòn không được để trống")]
         public double depreciation_rate { get; set; }
 
         /// <summary>
         /// Năm theo dõi
         /// </summary>
-        public int tracked_year { get; set; }
+        public int? tracked_year { get; set; }
 
         /// <summary>
         /// Số năm sử dụng
         /// </summary>
+        [IsNotNullOrEmpty("Số năm sử dụng không được để trống")]
         public int life_time { get; set; }
 
         /// <summary>
         /// Năm sử dụng
         /// </summary>
+        [IsNotNullOrEmpty("Ngày bắt đầu sử dụng không được để trống")]
         public int production_year { get; set; }
 
         /// <summary>
         /// Còn hoạt động hay không
         /// </summary>
-        public Boolean active { get; set; }
+        public Boolean? active { get; set; }
 
         /// <summary>
         /// Người tạo

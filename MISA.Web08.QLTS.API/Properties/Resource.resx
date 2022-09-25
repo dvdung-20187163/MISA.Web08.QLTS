@@ -185,6 +185,10 @@
     <value>https://openapi.misa.com.vn/errorcode/7</value>
     <comment>Đường dẫn tới mô tả lỗi Update bản ghi vào database thất bại</comment>
   </data>
+  <data name="MoreInfo_ValidateFailed" xml:space="preserve">
+    <value>https://openapi.misa.com.vn/errorcode/11</value>
+    <comment>Đường dẫn tới mô tả lỗi validate dữ liệu đầu vào thất bại</comment>
+  </data>
   <data name="UserMsg_BatchDeleteFailed" xml:space="preserve">
     <value>Xóa nhiều tài sản thất bại</value>
     <comment>Message cho User đọc khi DeleteMultiple bản ghi từ database thất bại</comment>

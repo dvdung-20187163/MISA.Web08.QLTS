@@ -214,6 +214,15 @@ namespace MISA.Web08.QLTS.API.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/11.
+        /// </summary>
+        public static string MoreInfo_ValidateFailed {
+            get {
+                return ResourceManager.GetString("MoreInfo_ValidateFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xóa nhiều tài sản thất bại.
         /// </summary>
         public static string UserMsg_BatchDeleteFailed {

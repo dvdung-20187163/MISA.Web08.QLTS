@@ -57,5 +57,10 @@
         /// Lọc tài sản thất bại
         /// </summary>
         FilterFailed = 10,
+
+        /// <summary>
+        /// Validate input bắt buộc
+        /// </summary>
+        InvalidInput = 11,
     }
 }

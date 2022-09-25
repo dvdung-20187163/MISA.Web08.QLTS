@@ -11,9 +11,9 @@ namespace MISA.Web08.QLTS.API.Entities.DTO
 
         public string UserMsg { get; set; }
 
-        public string MoreInfo { get; set; }
+        public Object MoreInfo { get; set; }
 
-        public string TraceId { get; set; } 
+        public string TraceId { get; set; }
         #endregion
 
         #region Constructor
@@ -31,14 +31,14 @@ namespace MISA.Web08.QLTS.API.Entities.DTO
         /// <param name="userMsg"></param>
         /// <param name="moreInfo"></param>
         /// <param name="traceId"></param>
-        public ErrorResult(QLTSErrorCode errorCode, string devMsg, string userMsg, string moreInfo, string traceId)
+        public ErrorResult(QLTSErrorCode errorCode, string devMsg, string userMsg, Object moreInfo, string traceId)
         {
             ErrorCode = errorCode;
             DevMsg = devMsg;
             UserMsg = userMsg;
             MoreInfo = moreInfo;
             TraceId = traceId;
-        } 
+        }
 
         #endregion
     }
